@@ -1,0 +1,7 @@
+FROM node:14-alpine
+COPY frontend-pokemon-app app
+WORKDIR /app
+RUN npm i
+ENV NODE_ENV production 
+EXPOSE 3000
+ENTRYPOINT ["npm","run","start" ]

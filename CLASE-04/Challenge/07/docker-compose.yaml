@@ -1,0 +1,18 @@
+version: "3"
+services:
+  pokemon-api-service:
+    build:
+      dockerfile: "backendDockerfile"
+    ports:
+      - 8000:8000
+  frontend:
+    build:
+      dockerfile: "frontendDockerfile"
+    links:
+      - pokemon-api-service
+    ports:
+      - 3000:3000
+    depends_on:
+      pokemon-api-service:
+        condition: service_started
+    

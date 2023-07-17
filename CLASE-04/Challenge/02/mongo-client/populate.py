@@ -1,7 +1,7 @@
 import pymongo
 
-client = pymongo.MongoClient("mongodb://localhost:27017/")
-db = client["mi-db"]
+client = pymongo.MongoClient("mongodb://m1:27017/")
+db = client["m1"]
 
 # Name
 print("Nombre de la DB: ", db.name)

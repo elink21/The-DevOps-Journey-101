@@ -1,0 +1,5 @@
+FROM python:3.8
+COPY consumer consumer
+WORKDIR /consumer
+RUN pip install -r requirements.txt
+ENTRYPOINT [ "python3","consumer.py" ]

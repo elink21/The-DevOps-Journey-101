@@ -1,7 +1,7 @@
 import pymongo
 
-client = pymongo.MongoClient("mongodb://localhost:27017/")
-db = client["mi-db"]
+client = pymongo.MongoClient("mongodb://m1:27017/")
+db = client["m1"]
 
 # Obtén un registro
 print("Imprime un registro\n", db.pet.find_one(), "\n")

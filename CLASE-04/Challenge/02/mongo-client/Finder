@@ -1,0 +1,4 @@
+FROM python:alpine
+COPY find.py .
+RUN pip3 install pymongo
+ENTRYPOINT ["python3", "find.py"]

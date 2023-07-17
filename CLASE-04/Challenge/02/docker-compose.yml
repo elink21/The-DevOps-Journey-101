@@ -1,0 +1,32 @@
+version: "3"
+services:
+  m1:
+    container_name: m1
+    image: mongo
+    ports:
+      - "27017:27017"
+  
+  populator:
+    container_name: populator
+    build: 
+      context: "./mongo-client/"
+      dockerfile: "Populator"
+   
+    depends_on:
+      m1:
+        condition: service_started
+    links:
+      - m1
+   
+  finder:
+    container_name: finder
+    build: 
+      context: "./mongo-client/"
+      dockerfile: "Finder"
+   
+    depends_on:
+      populator:
+        condition: service_completed_successfully
+    links:
+      - m1
+ 

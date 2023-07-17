@@ -1,0 +1,20 @@
+version: "3"
+services:
+  service-flask-app:
+    build:
+      dockerfile: appDockerfile
+    ports:
+      - "8000:80"
+  
+  consumer:
+    build:
+      dockerfile: consumerDockerfile
+    links:
+      - service-flask-app
+    environment:
+      - LOCAL=true
+      - PYTHONUNBUFFERED="1"
+    
+    depends_on:
+      service-flask-app:
+        condition: service_started
